@@ -9,6 +9,7 @@ DATA: lt_acchdr  TYPE STANDARD TABLE OF zst7acchdr_dftum,
       lt_accitm  TYPE STANDARD TABLE OF zst7accitm_dftum,
       lc_accdata TYPE REF TO zst7_accdata_amdp.
 
+CREATE OBJECT lc_accdata.
 
 CALL METHOD lc_accdata->get_accounting_data
   EXPORTING
