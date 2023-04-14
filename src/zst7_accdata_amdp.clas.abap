@@ -63,7 +63,7 @@ CLASS zst7_accdata_amdp IMPLEMENTATION.
                                      OPTIONS READ-ONLY
                                      USING zst7_accdata_amdp=>get_accounting_data zst7accitm_dftum.
 
-* Calling one AMDP method withing another method
+* Calling one AMDP method withing another method. Has to be in CAPITAL
     CALL "ZST7_ACCDATA_AMDP=>GET_ACCOUNTING_DATA"( iv_bukrs => :iiv_bukrs,
                                                    iv_belnr => :iiv_belnr,
                                                    iv_gjahr => :iiv_gjahr,
