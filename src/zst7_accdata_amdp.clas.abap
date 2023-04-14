@@ -7,7 +7,7 @@ CLASS zst7_accdata_amdp DEFINITION
 * Mandatory to define this interface for AMDP
     INTERFACES if_amdp_marker_hdb.
 
-* Structure for BSEG
+* Structure for line item table ZST7ACCITM_DFTUM
     TYPES: BEGIN OF lsty_zst7accitm_dftum,
              compcode    TYPE bukrs,
              docnumber   TYPE belnr_d,
