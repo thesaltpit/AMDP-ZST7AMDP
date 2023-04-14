@@ -9,7 +9,7 @@ DATA: lt_acchdr  TYPE STANDARD TABLE OF zst7acchdr_dftum,
       lt_accitm  TYPE STANDARD TABLE OF zst7accitm_dftum,
       lc_accdata TYPE REF TO zst7_accdata_amdp.
 
-CREATE OBJECT lc_accdata.
+*CREATE OBJECT lc_accdata.
 
 *CALL METHOD lc_accdata->get_accounting_data
 *  EXPORTING
@@ -38,13 +38,23 @@ CREATE OBJECT lc_accdata.
 *
 *ENDLOOP.
 
+TABLES: zst7acchdr_dftum.
+
+SELECTION-SCREEN: BEGIN OF BLOCK b1 WITH FRAME TITLE TEXT-001.
+  SELECT-OPTIONS: s_compcd FOR zst7acchdr_dftum-bukrs NO INTERVALS NO-EXTENSION,
+                  s_docno FOR zst7acchdr_dftum-belnr NO-EXTENSION NO INTERVALS,
+                  s_fisyr FOR zst7acchdr_dftum-gjahr NO INTERVALS NO-EXTENSION.
+
+SELECTION-SCREEN: END OF BLOCK b1.
+
+
 DATA(lc_raptest) = NEW zst7_accdata_amdp(  ).
 
 lc_raptest->get_accounting_line_details(
 EXPORTING
-    iiv_bukrs = '1710'
-    iiv_belnr = '1190000017'
-    iiv_gjahr = '2023'
+    iiv_bukrs = s_compcd-low
+    iiv_belnr = s_docno-low
+    iiv_gjahr = s_fisyr-low
 IMPORTING
     et_lineitems = DATA(lt_lineitems)
 ).
