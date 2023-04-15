@@ -20,6 +20,9 @@ CLASS zst7_amdp_tabln_fn IMPLEMENTATION.
                        OPTIONS READ-ONLY.
 
     RETURN
+* client field needs to be added
+* Dummy is not a database table or a DDIC table. It is a system table and contains only
+* one row
     SELECT '100' AS client, 'Today' AS datetype, to_varchar( now (  ), 'YYYYMMDD' ) as dateval FROM PUBLIC.dummy
     union all
     select '100' as client, '30 Days Before' as datetype, to_varchar( add_days( now(  ), -30 ), 'YYYYMMDD' ) as dateval FROM PUBLIC.dummy
